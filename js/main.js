@@ -1,0 +1,1 @@
+Modernizr.addTest("hyphens", Modernizr.testAllProps('hyphens'));
