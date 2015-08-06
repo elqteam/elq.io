@@ -1,0 +1,63 @@
+.btn {
+    background: none;
+    border-width: 3px;
+    border-style: solid;
+    padding: 10px 20px;
+    font-weight: 700;
+    .transition(all 80ms ease-in);
+
+    &:hover {
+        .translate(0, -3px);
+    }
+
+    &:active {
+        .scale(0.95);
+        &:focus {
+            outline: none;
+        }
+    }
+}
+
+.btn-big {
+    border-width: 3px;
+    padding: 16px 32px;
+    font-size: 1.25rem;
+}
+
+.btn-yellow {
+    background-color: @blue;
+    border-color: @yellow;
+    color: @yellow;
+}
+
+.btn-blue {
+    background-color: #fff;
+    color: @blue;
+    border: 3px solid @blue;
+}
+
+.btn-white {
+    background-color: @blue;
+    color: #fff;
+    border: 3px solid #fff;
+}
+
+
+.button-version-wrapper {
+    display: inline-block;
+    padding-bottom: 24px;
+    position: relative;
+
+    label {
+        font-family: "anonymous-pro", courier;
+        font-weight: bold;
+        display: block;
+        width: 100%;
+        text-align: center;
+        position: absolute;
+        bottom: 0;
+
+        color: #fff;
+        opacity: 0.33;
+    }
+}
