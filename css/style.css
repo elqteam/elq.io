@@ -865,7 +865,7 @@ footer nav ul li:last-child {
   margin-right: 0;
 }
 .demo-box {
-  padding: 60px;
+  padding: 40px;
   border: 5px solid #4c5863;
   resize: both;
   overflow: hidden;
@@ -874,6 +874,7 @@ footer nav ul li:last-child {
   margin-left: auto;
   max-width: 450px;
   width: 80px;
+  height: 80px;
 }
 .demo-module {
   width: 100%;
