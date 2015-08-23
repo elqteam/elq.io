@@ -872,9 +872,12 @@ footer nav ul li:last-child {
   margin-bottom: 33px;
   margin-right: auto;
   margin-left: auto;
-  max-width: 450px;
+  max-width: 100%;
   width: 80px;
   height: 80px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 .demo-module {
   width: 100%;
@@ -886,19 +889,19 @@ footer nav ul li:last-child {
   -ms-transition: all 200ms ease-in;
   -o-transition: all 200ms ease-in;
 }
-.demo-module.elq-width-above-100 {
+.elq-width-above-100 .demo-module {
   background-color: #005093;
   border-radius: 25px;
 }
-.demo-module.elq-width-above-200 {
+.elq-width-above-200 .demo-module {
   background-color: #3f9be8;
   border-radius: 50px;
 }
-.demo-module.elq-width-above-300 {
+.elq-width-above-300 .demo-module {
   background-color: #85b70d;
   border-radius: 100px;
 }
-.demo-module.elq-width-above-400 {
+.elq-width-above-400 .demo-module {
   background-color: #ffcc05;
   border-radius: 50%;
 }

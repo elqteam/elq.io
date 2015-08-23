@@ -9,24 +9,25 @@
     background-color: #000;    
     border-radius: 0px;
     .transition(all 200ms ease-in);
-}
 
-.demo-module.elq-width-above-100 {
-    background-color: @blue;
-    border-radius: 25px;
-}
+    .elq-width-above-100 & {
+        background-color: @blue;
+        border-radius: 25px;
+    }
 
-.demo-module.elq-width-above-200 {
-    background-color: @lightblue;
-    border-radius: 50px;
-}
+    .elq-width-above-200 & {
+        background-color: @lightblue;
+        border-radius: 50px;
+    }
 
-.demo-module.elq-width-above-300 {
-    background-color: @green;
-    border-radius: 100px;
-}
 
-.demo-module.elq-width-above-400 {
-    background-color: @yellow;
-    border-radius: 50%;
+    .elq-width-above-300 & {
+        background-color: @green;
+        border-radius: 100px;
+    }
+
+    .elq-width-above-400 & {
+        background-color: @yellow;
+        border-radius: 50%;
+    }
 }
