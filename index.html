@@ -8,6 +8,9 @@
     <script>try{Typekit.load({ async: true });}catch(e){}</script>
 
     <script src="js/modernizr/modernizr.js"></script>
+    <script src="js/elq/elq.js"></script>
+    <script src="js/elq/elq-breakpoints.js"></script>
+    <script src="js/elq/elq-mirror.js"></script>
     <script src="js/main.js"></script>
 
 </head>
@@ -73,11 +76,7 @@
 
 
             <div class="demo-box">
-                <div class="demo-module demo-module-square"></div>
-                <br>
-                <div class="demo-module demo-module-circle"></div>
-                <br>
-                <div class="demo-module demo-module-triangle"></div>
+                <div class="demo-module" elq elq-breakpoints elq-breakpoints-width="100 200 300 400"></div>
             </div>
 
             <center><button class="btn btn-blue">More demos</button></center>

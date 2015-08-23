@@ -452,11 +452,15 @@ a {
   text-decoration: none;
 }
 .container {
+  display: block;
   padding: 0 40px;
   width: 777px;
   max-width: 100%;
   margin-left: auto;
   margin-right: auto;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 .btn {
   background: none;
@@ -866,19 +870,34 @@ footer nav ul li:last-child {
   resize: both;
   overflow: hidden;
   margin-bottom: 33px;
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 450px;
+  width: 80px;
 }
 .demo-module {
-  width: 100px;
-  height: 100px;
+  width: 100%;
+  padding-bottom: 100%;
+  background-color: #000;
+  border-radius: 0px;
+  -webkit-transition: all 200ms ease-in;
+  -moz-transition: all 200ms ease-in;
+  -ms-transition: all 200ms ease-in;
+  -o-transition: all 200ms ease-in;
 }
-.demo-module-square {
-  border: 5px solid #4c5863;
+.demo-module.elq-width-above-100 {
+  background-color: #005093;
+  border-radius: 25px;
 }
-.demo-module-circle {
-  border: 5px solid #4c5863;
+.demo-module.elq-width-above-200 {
+  background-color: #3f9be8;
+  border-radius: 50px;
+}
+.demo-module.elq-width-above-300 {
+  background-color: #85b70d;
+  border-radius: 100px;
+}
+.demo-module.elq-width-above-400 {
+  background-color: #ffcc05;
   border-radius: 50%;
-}
-.demo-module-triangle {
-  border: 5px solid #4c5863;
-  border-radius: 25%;
 }
