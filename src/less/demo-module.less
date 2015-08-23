@@ -1,18 +1,32 @@
 .demo-module {
-    width: 100px;
-    height: 100px;
+    width: 100%;
+    padding-bottom: 100%;
+
+    // border-width: 5px;
+    // border-style: solid;
+    // border-color: @yellow;
+
+    background-color: #000;    
+    border-radius: 0px;
+    .transition(all 200ms ease-in);
 }
 
-.demo-module-square {
-    border: 5px solid @bley;
+.demo-module.elq-width-above-100 {
+    background-color: @blue;
+    border-radius: 25px;
 }
 
-.demo-module-circle {
-    border: 5px solid @bley;
+.demo-module.elq-width-above-200 {
+    background-color: @lightblue;
+    border-radius: 50px;
+}
+
+.demo-module.elq-width-above-300 {
+    background-color: @green;
+    border-radius: 100px;
+}
+
+.demo-module.elq-width-above-400 {
+    background-color: @yellow;
     border-radius: 50%;
-}
-
-.demo-module-triangle {
-    border: 5px solid @bley;
-    border-radius: 25%;
 }

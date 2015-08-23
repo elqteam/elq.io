@@ -4,6 +4,8 @@ module.exports = function(grunt) {
     require("load-grunt-tasks")(grunt);
 
     var config = {
+        clean: ["dist"],
+
         less: {
             development: {
                 files: {
@@ -18,7 +20,8 @@ module.exports = function(grunt) {
                     { expand: true, cwd: "src/", src: ["*.html"], dest: "dist/" },
                     { expand: true, cwd: "src/", src: ["js/**/*.js"], dest: "dist/" },
                     { expand: true, cwd: "assets/", src: ["**/*.*"], dest: "dist/" },
-                    { expand: true, cwd: "bower_components/", src: ["modernizr/modernizr.js"], dest: "dist/js/" }
+                    { expand: true, cwd: "bower_components/", src: ["modernizr/modernizr.js"], dest: "dist/js/" },
+                    { expand: true, flatten: true, cwd: "node_modules/", src: ["elq/dist/*.js"], dest: "dist/js/elq/" }
                 ]
             }
         },
@@ -46,7 +49,7 @@ module.exports = function(grunt) {
 
     grunt.initConfig(config);
 
-    grunt.registerTask("build", ["less:development", "copy:main"]);
+    grunt.registerTask("build", ["clean", "less:development", "copy:main"]);
 
     grunt.registerTask("default", ["build", "connect", "watch"]);
 };
