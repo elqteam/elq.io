@@ -884,10 +884,6 @@ footer nav ul li:last-child {
   padding-bottom: 100%;
   background-color: #000;
   border-radius: 0px;
-  -webkit-transition: all 200ms ease-in;
-  -moz-transition: all 200ms ease-in;
-  -ms-transition: all 200ms ease-in;
-  -o-transition: all 200ms ease-in;
 }
 .elq-width-above-100 .demo-module {
   background-color: #005093;
