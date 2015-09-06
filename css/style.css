@@ -461,7 +461,7 @@ th {
 body {
   font-family: "proxima-nova", sans-serif;
   font-size: 100%;
-  color: #4c5863;
+  color: #6d7e8e;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -481,6 +481,12 @@ h3 {
 h1 {
   font-size: 3rem;
   margin-bottom: 49.5px;
+}
+h2 {
+  font-size: 2rem;
+  color: #ffcc05;
+  margin-bottom: 0;
+  line-height: 1;
 }
 a {
   color: #ffcc05;
