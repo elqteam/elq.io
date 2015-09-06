@@ -867,14 +867,13 @@ footer nav ul li:last-child {
 .demo-box {
   padding: 20px;
   border: 5px solid #4c5863;
-  resize: both;
   overflow: hidden;
   margin-bottom: 33px;
   margin-right: auto;
   margin-left: auto;
   max-width: 100%;
   width: 80px;
-  height: 80px;
+  height: auto;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -883,21 +882,21 @@ footer nav ul li:last-child {
   width: 100%;
   padding-bottom: 100%;
   background-color: #000;
-  border-radius: 0px;
+  border-radius: 10%;
 }
-.elq-width-above-100 .demo-module {
+.elq-min-width-100 .demo-module {
   background-color: #005093;
-  border-radius: 25px;
+  border-radius: 20%;
 }
-.elq-width-above-200 .demo-module {
+.elq-min-width-200 .demo-module {
   background-color: #3f9be8;
-  border-radius: 50px;
+  border-radius: 30%;
 }
-.elq-width-above-300 .demo-module {
+.elq-min-width-300 .demo-module {
   background-color: #85b70d;
-  border-radius: 100px;
+  border-radius: 40%;
 }
-.elq-width-above-400 .demo-module {
+.elq-min-width-400 .demo-module {
   background-color: #ffcc05;
   border-radius: 50%;
 }
