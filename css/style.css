@@ -913,11 +913,17 @@ footer nav ul li:last-child {
   margin-right: auto;
   margin-left: auto;
   max-width: 100%;
-  width: 80px;
-  height: 80px;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
+}
+#demo-box-1 {
+  width: 80px;
+  height: 80px;
+}
+#demo-box-2 {
+  width: 150px;
+  height: 150px;
 }
 .demo-module {
   position: relative;
