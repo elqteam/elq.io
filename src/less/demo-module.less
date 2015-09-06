@@ -1,33 +1,38 @@
 .demo-module {
+    position: relative;
     width: 100%;
-    padding-bottom: 100%;
-
+    height: 100%;
     // border-width: 5px;
     // border-style: solid;
     // border-color: @yellow;
 
     background-color: #000;
-    border-radius: 0px;
-    // .transition(all 200ms ease-in);
+    border-radius: 10%;
 
-    .elq-width-above-100 & {
+    &.elq-min-width-100 {
         background-color: @blue;
-        border-radius: 25px;
+        border-radius: 20%;
     }
 
-    .elq-width-above-200 & {
+    &.elq-min-width-200 {
         background-color: @lightblue;
-        border-radius: 50px;
+        border-radius: 30%;
     }
 
-
-    .elq-width-above-300 & {
+    &.elq-min-width-300 {
         background-color: @green;
-        border-radius: 100px;
+        border-radius: 40%;
     }
 
-    .elq-width-above-400 & {
+    &.elq-min-width-400 {
         background-color: @yellow;
         border-radius: 50%;
     }
+}
+
+.demo-module .demo-module {
+    width: 60%;
+    height: 60%;
+    top: 20%;
+    left: 20%;
 }

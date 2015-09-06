@@ -70,6 +70,7 @@ function initResizeButtons(elq) {
             }
 
             target.style.width = newWidth;
+            target.style.height = newWidth;
         });
     });
 }
