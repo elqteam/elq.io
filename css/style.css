@@ -873,30 +873,37 @@ footer nav ul li:last-child {
   margin-left: auto;
   max-width: 100%;
   width: 80px;
-  height: auto;
+  height: 80px;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
 .demo-module {
+  position: relative;
   width: 100%;
-  padding-bottom: 100%;
+  height: 100%;
   background-color: #000;
   border-radius: 10%;
 }
-.elq-min-width-100 .demo-module {
+.demo-module.elq-min-width-100 {
   background-color: #005093;
   border-radius: 20%;
 }
-.elq-min-width-200 .demo-module {
+.demo-module.elq-min-width-200 {
   background-color: #3f9be8;
   border-radius: 30%;
 }
-.elq-min-width-300 .demo-module {
+.demo-module.elq-min-width-300 {
   background-color: #85b70d;
   border-radius: 40%;
 }
-.elq-min-width-400 .demo-module {
+.demo-module.elq-min-width-400 {
   background-color: #ffcc05;
   border-radius: 50%;
+}
+.demo-module .demo-module {
+  width: 60%;
+  height: 60%;
+  top: 20%;
+  left: 20%;
 }
