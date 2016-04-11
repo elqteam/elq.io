@@ -480,7 +480,7 @@ h3 {
 h1 {
   color: #005093;
   font-size: 3rem;
-  margin-bottom: 49.5px;
+  margin-bottom: 132px;
 }
 h2 {
   font-size: 2rem;
@@ -494,10 +494,14 @@ h3 {
   line-height: 1.4;
 }
 hgroup {
-  margin-bottom: 49.5px;
+  margin-bottom: 132px;
 }
 hgroup h1 {
   margin-bottom: 16.5px;
+}
+hgroup h2 {
+  margin-top: 0;
+  margin-bottom: 0;
 }
 a {
   color: #ffcc05;
