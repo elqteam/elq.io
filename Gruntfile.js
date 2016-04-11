@@ -22,7 +22,8 @@ module.exports = function(grunt) {
                     { expand: true, cwd: "assets/", src: ["**/*.*"], dest: "dist/" },
                     { expand: true, cwd: "bower_components/", src: ["modernizr/modernizr.js"], dest: "dist/js/" },
                     { expand: true, cwd: "bower_components/", src: ["Chart.js/Chart.min.js"], dest: "dist/js/" },
-                    { expand: true, flatten: true, cwd: "node_modules/", src: ["elq/dist/*.js"], dest: "dist/js/elq/" }
+                    { expand: true, flatten: true, cwd: "node_modules/", src: ["elq/dist/*.js"], dest: "dist/js/elq/" },
+                    { expand: true, flatten: true, cwd: "node_modules/", src: ["tabs/*.js"], dest: "dist/js/tabs/" }
                 ]
             }
         },

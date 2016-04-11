@@ -492,6 +492,35 @@ a {
   color: #ffcc05;
   text-decoration: none;
 }
+code {
+  font-family: "anonymous-pro", courier;
+  background-color: #ffcc05;
+  color: #fff;
+  padding: 0 5px;
+}
+em {
+  font-weight: 700;
+  font-style: normal;
+  color: #ffcc05;
+}
+.blue {
+  color: #005093;
+}
+.yellow {
+  color: #ffcc05;
+}
+.green {
+  color: #85b70d;
+}
+.lightblue {
+  color: #3f9be8;
+}
+.bley {
+  color: #4c5863;
+}
+.bley2 {
+  color: #6d7e8e;
+}
 .container {
   display: block;
   padding: 0 40px;
@@ -504,21 +533,23 @@ a {
   box-sizing: border-box;
 }
 .btn {
+  display: inline-block;
   background: none;
   border-width: 3px;
   border-style: solid;
   padding: 10px 20px;
   font-weight: 700;
-  -webkit-transition: all 80ms ease-in;
-  -moz-transition: all 80ms ease-in;
-  -ms-transition: all 80ms ease-in;
-  -o-transition: all 80ms ease-in;
+  -webkit-transition: all 300ms cubic-bezier(0.645, 0.045, 0.355, 1);
+  -moz-transition: all 300ms cubic-bezier(0.645, 0.045, 0.355, 1);
+  -ms-transition: all 300ms cubic-bezier(0.645, 0.045, 0.355, 1);
+  -o-transition: all 300ms cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 .btn:hover {
-  -webkit-transform: translate(0, -3px);
-  -moz-transform: translate(0, -3px);
-  -ms-transform: translate(0, -3px);
-  -o-transform: translate(0, -3px);
+  -webkit-transform: translate(0, -5px);
+  -moz-transform: translate(0, -5px);
+  -ms-transform: translate(0, -5px);
+  -o-transform: translate(0, -5px);
+  cursor: pointer;
 }
 .btn:active {
   -webkit-transform: scale(0.95);
@@ -552,6 +583,10 @@ a {
 section {
   padding: 120px 0;
 }
+section a {
+  color: #005093;
+  font-weight: 600;
+}
 section h1,
 section h2,
 section h3 {
@@ -560,6 +595,25 @@ section h3 {
 section p {
   margin-left: auto;
   margin-right: auto;
+}
+section ul {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 33px;
+}
+section li {
+  font-size: 1.5em;
+  font-weight: 600;
+  line-height: 1.4;
+  padding-left: 1em;
+  text-indent: -0.7em;
+}
+section li:before {
+  content: "•";
+  color: #ffcc05;
+  /* or whatever color you prefer */
+  padding-right: 7px;
+  font-size: 1.5em;
 }
 .section-separator {
   border: none;
@@ -599,7 +653,7 @@ section p {
 #intro p {
   color: #fff;
   max-width: 555px;
-  font-size: 2.65rem;
+  font-size: 2rem;
   line-height: 1.1;
   letter-spacing: -0.03em;
   font-weight: 700;
@@ -906,6 +960,7 @@ footer nav ul li:last-child {
   margin-right: 0;
 }
 .demo-box {
+  position: relative;
   padding: 20px;
   border: 5px solid #4c5863;
   overflow: hidden;
@@ -931,6 +986,10 @@ footer nav ul li:last-child {
   height: 100%;
   background-color: #000;
   border-radius: 10%;
+  padding: 20%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 .demo-module.elq-min-width-100 {
   background-color: #005093;
@@ -948,9 +1007,59 @@ footer nav ul li:last-child {
   background-color: #ffcc05;
   border-radius: 50%;
 }
-.demo-module .demo-module {
-  width: 60%;
-  height: 60%;
-  top: 20%;
-  left: 20%;
+.tabs {
+  position: relative;
+  margin-bottom: -10px;
+}
+.tab {
+  display: inline-block;
+  background: none;
+  border-width: 3px;
+  border-style: solid;
+  padding: 10px 20px;
+  font-weight: 700;
+  -webkit-transition: all 300ms cubic-bezier(0.645, 0.045, 0.355, 1);
+  -moz-transition: all 300ms cubic-bezier(0.645, 0.045, 0.355, 1);
+  -ms-transition: all 300ms cubic-bezier(0.645, 0.045, 0.355, 1);
+  -o-transition: all 300ms cubic-bezier(0.645, 0.045, 0.355, 1);
+  background-color: #fff;
+  color: #005093;
+  border: 3px solid #005093;
+  border-bottom: 0;
+  padding-bottom: 20px;
+}
+.tab:hover {
+  -webkit-transform: translate(0, -5px);
+  -moz-transform: translate(0, -5px);
+  -ms-transform: translate(0, -5px);
+  -o-transform: translate(0, -5px);
+  cursor: pointer;
+}
+.tab:active {
+  -webkit-transform: scale(0.95);
+  -moz-transform: scale(0.95);
+  -ms-transform: scale(0.95);
+  -o-transform: scale(0.95);
+}
+.tab:active:focus {
+  outline: none;
+}
+.tab.active {
+  background-color: #005093;
+  color: #ffcc05;
+}
+.tab-panes {
+  position: relative;
+  z-index: 1;
+  border: 3px solid #005093;
+}
+.tab-panes .gist .gist-file {
+  margin-bottom: 0;
+  border-radius: 0;
+}
+.tab-panes .tab-pane {
+  display: none;
+}
+.tab-panes .active {
+  display: block;
 }

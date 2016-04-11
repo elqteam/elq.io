@@ -1,6 +1,11 @@
 section {
     padding: 120px 0;
 
+    a {
+        color: @blue;
+        font-weight: 600;
+    }
+
     h1, h2, h3 {
         text-align: center;
     }
@@ -8,6 +13,27 @@ section {
     p {
         margin-left: auto;
         margin-right: auto;
+    }
+
+    ul {
+        list-style: none;
+        padding: 0;
+        margin-bottom: @line-height-computed;
+    }
+
+    li {
+        font-size: 1.5em;
+        font-weight: 600;
+        line-height: 1.4;
+        padding-left: 1em; 
+        text-indent: -.7em;
+    }
+
+    li:before {
+        content: "•";
+        color: @yellow; /* or whatever color you prefer */
+        padding-right: 7px;
+        font-size: 1.5em;
     }
 }
 
