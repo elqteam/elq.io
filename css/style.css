@@ -560,8 +560,17 @@ ol li:before {
 ol ol {
   list-style-type: lower-roman;
 }
+ol ol li {
+  font-weight: normal;
+}
 ol ol li:before {
   display: none;
+}
+ol.spacey li {
+  margin-bottom: 16.5px;
+}
+ol.spacey ol {
+  margin-top: 16.5px;
 }
 .container {
   display: block;
