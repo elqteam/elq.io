@@ -107,8 +107,22 @@ ol li:before {
 ol ol {
     list-style-type: lower-roman;
 
+    li {
+        font-weight: normal;
+    }
+
     li:before {
         display: none;
+    }
+}
+
+ol.spacey {
+    li {
+        margin-bottom: 0.5 * @line-height-computed;
+    }
+
+    ol {
+        margin-top: 0.5 * @line-height-computed;
     }
 }
 

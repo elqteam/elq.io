@@ -336,7 +336,7 @@
 
             <p>There are two main flows of the ELQ system; activating an element and updating an element. When ELQ is requested to activate an element, the following flow occurs:</p>
 
-            <ol>
+            <ol class="spacey">
                 <li>The element is initialized by installing properties and a system handling listeners.</li>
                 <li>The <code>getElements</code> method of all plugins is called to retrieve any additional elements to activate. Additional elements will go through an own flow.</li>
                 <li>The <code>activate</code> method of all plugins is called so that plugin specific initialized may occur.</li>
@@ -346,7 +346,7 @@
 
             <p>The update flow is as follows:</p>
 
-            <ol>
+            <ol class="spacey">
                 <li>The <code>getBreakpoints</code> method of all plugins is called to retrieve all breakpoints of the element.</li>
                 <li>Breakpoint states are calculated.</li>
                 <li>If any state has changed since the previous update:
