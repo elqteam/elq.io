@@ -488,6 +488,12 @@ h2 {
   margin-bottom: 0;
   line-height: 1;
 }
+hgroup {
+  margin-bottom: 49.5px;
+}
+hgroup h1 {
+  margin-bottom: 16.5px;
+}
 a {
   color: #ffcc05;
   text-decoration: none;
@@ -986,7 +992,7 @@ footer nav ul li:last-child {
   height: 100%;
   background-color: #000;
   border-radius: 10%;
-  padding: 20%;
+  padding: 25%;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
