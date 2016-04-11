@@ -475,10 +475,10 @@ p {
 h1,
 h2,
 h3 {
-  color: #005093;
   letter-spacing: -0.03em;
 }
 h1 {
+  color: #005093;
   font-size: 3rem;
   margin-bottom: 49.5px;
 }
@@ -487,6 +487,11 @@ h2 {
   color: #ffcc05;
   margin-bottom: 0;
   line-height: 1;
+}
+h3 {
+  color: #4c5863;
+  font-size: 1.5rem;
+  line-height: 1.4;
 }
 hgroup {
   margin-bottom: 49.5px;
@@ -504,10 +509,25 @@ code {
   color: #fff;
   padding: 0 5px;
 }
+code.green {
+  background-color: #85b70d;
+  color: #fff;
+}
+code.blue {
+  background-color: #3f9be8;
+  color: #fff;
+}
+code.simple {
+  color: #ffcc05;
+  background: none;
+  padding: 0;
+}
+code.simple.green {
+  color: #85b70d;
+}
 em {
   font-weight: 700;
   font-style: normal;
-  color: #ffcc05;
 }
 .blue {
   color: #005093;
@@ -526,6 +546,22 @@ em {
 }
 .bley2 {
   color: #6d7e8e;
+}
+ol {
+  list-style: none;
+}
+ol li {
+  counter-increment: item;
+}
+ol li:before {
+  content: counter(item) ". ";
+  color: #ffcc05;
+}
+ol ol {
+  list-style-type: lower-roman;
+}
+ol ol li:before {
+  display: none;
 }
 .container {
   display: block;
@@ -594,37 +630,50 @@ section a {
   font-weight: 600;
 }
 section h1,
-section h2,
-section h3 {
+section h2 {
   text-align: center;
 }
 section p {
   margin-left: auto;
   margin-right: auto;
 }
-section ul {
-  list-style: none;
-  padding: 0;
+section ul,
+section ol {
   margin-bottom: 33px;
 }
 section li {
-  font-size: 1.5em;
+  font-size: 1.5rem;
   font-weight: 600;
   line-height: 1.4;
+}
+section ul {
+  list-style: none;
+  padding: 0;
+}
+section ul li {
   padding-left: 1em;
   text-indent: -0.7em;
 }
-section li:before {
+section ul li:before {
   content: "•";
   color: #ffcc05;
   /* or whatever color you prefer */
   padding-right: 7px;
   font-size: 1.5em;
 }
+section > .container > .gist {
+  margin-bottom: 33px;
+}
 .section-separator {
   border: none;
   border-bottom: 5px solid #ffcc05;
   width: 240px;
+}
+.subsection-separator {
+  border: none;
+  border-bottom: 3px solid #6d7e8e;
+  width: 120px;
+  margin: 33px 0 49.5px 0;
 }
 #intro {
   background-color: #005093;
