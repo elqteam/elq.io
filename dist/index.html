@@ -126,7 +126,7 @@
             <br>
 
             <h2>Nested modules</h2>
-            <p>The modules are naturally nestable. Let's try nesting our test-module.</p>
+            <p>The modules are naturally nestable. Let's try nesting our demo-module.</p>
 
             <center><button resize-target="demo-box-2" resize-sizes="150 250 350 450" class="btn btn-blue">Resize</button></center>
             <br>
@@ -150,7 +150,9 @@
                 <h1>Documentation</h1>
             </header>
 
-            <p>We haven't had time to write proper docs yet. What follows is really a minimal explanation of the API.</p>
+            <div class="note">
+                <p>We haven't had time to write proper docs yet. What follows is really a minimal explanation of the API.</p>
+            </div>
 
             <h2>Usage example</h2>
 
@@ -166,7 +168,7 @@
 
             <p>When ELQ has processed the element, it will always have two classes, one for each breakpoint, that tells if the size of the element is greater or lesser than each breakpoint. For instance, if the element is 400 pixels wide, the element has the two classes <code>elq-min-width-300px</code> and <code>elq-max-width-500px</code>. Similarly, if the element is 200 pixels wide the element the classes are instead <code>elq-max-width-300px</code> and <code>elq-max-width-500px</code>. So for each breakpoint only the <code>min/max</code> part changes.</p>
 
-            <p>It may seem alien that the classes describe that the width of the element is both maximum 300 and 500 pixels. This is because we have taken a user-centric approach, so that when using the classes in CSS the API is similar to media queries (while sticking to the CSS-spec). However, developers are free to change this API at will as <em>Elq</em> is plugin-based.</p>
+            <p>It may seem alien that the classes describe that the width of the element is both maximum 300 and 500 pixels. This is because we have taken a user-centric approach, so that when using the classes in CSS the API is similar to media queries (while sticking to the CSS-spec). However, developers are free to change this API at will as <code>Elq</code> is plugin-based.</p>
 
             <p>Now that we have defined the breakpoints of the element, we can conditionally style it by using the classes:</p>
 
@@ -196,6 +198,186 @@
             <script src="https://gist.github.com/nadangergeo/d8f40075e5619f9904bb333278c038e1.js"></script>
 
             <p>As the paragraph elements are mirroring the nearest .foo ancestor, we can now write CSS in the following encapsulated way:</p>
+
+            <script src="https://gist.github.com/nadangergeo/be1df092c0b0d470320fedc8e644f323.js"></script>
+
+            <p>Since we in the previous examples have annotated elements manually, the power and flexibility of the API have not been properly displayed. Only when combined with JavaScript, things get more interesting. To be continued...</p>
+        </div>
+    </section>
+
+    <hr class="section-separator">
+
+    <section>
+        <div class="container">
+            <header>
+                <h1>Public API</h1>
+            </header>
+
+            <p>An ELQ instance exposes the following public methods:</p>
+
+            <h3><code>elq.getVersion()</code></h3>
+            <p>Returns the version of instance.</p>
+
+            <hr class="subsection-separator">
+
+            <h3><code>elq.use(plugin)</code></h3>
+            <p>Registers a plugin to be used by the instance. Parameter is required to be a <code class="simple green">plugin definition object.</code></p>
+
+            <hr class="subsection-separator">
+
+            <h3><code>elq.using(plugin)</code></h3>
+            <p>Tells if the given plugin has been registered or not. Parameter can be a plugin name (of type string) or a plugin definition object.</p>
+            <p>Returns a <code class="simple green">Boolean</code>..</p>
+
+            <hr class="subsection-separator">
+
+            <h3><code>elq.activate(elements)</code></h3>
+            <p>Activates the given collection of elements. This triggers ELQ to perform its work so that all element queries are updated. Plugins are invoked, so that they can perform their logic. Resize listeners are also installed when propriate. Elements may be activated multiple times.</p>
+            <p>Parameter can be any collection of elements, and also accepts a single element. The are assumed to be ELQ-elements and it is not recommended to activate non-ELQ elements.</p>
+
+            <hr class="subsection-separator">
+
+            <h3><code>elq.listenTo([element], event, callback)</code></h3>
+            <p>Registers a callback to be called for an event of an element. The element parameter is option, and if omitted the callback will be called when the event is emitted for any element.</p>
+
+
+        </div>
+    </section>
+
+    <hr class="section-separator">
+
+    <section>
+        <div class="container">
+            <header>
+                <h1>Options</h1>
+            </header>
+
+            <h3><code>cycleDetection</code></h3>
+            <ul>
+                <li>Type: <code class="simple green">Boolean</code></li>
+                <li>Default: <code class="simple green">Boolean</code></li>
+            </ul>
+            <p>When enabled, the cycle detection system tries to detect cyclic rules and breaks them if needed. When a cycle is detected, a console warning is printed. This may be helpful during development to catch cycles.</p>
+
+            <hr class="subsection-separator">
+
+            <h3><code>defaultUnit</code></h3>
+            <ul>
+                <li>Type: <code class="simple green">String</code></li>
+                <li>Valid values: <code class="green">"px"</code> <code class="green">"em"</code> <code class="green">"rem"</code></li>
+                <li>Default: <code class="green">"px"</code></li>
+            </ul>
+            <p>Sets the default unit for all breakpoints that do not have a unit postfix. For instance, if defaultUnit is set to <code class="green">"em"</code>, the breakpoint <code class="simple green">300</code> is interpreted as <code class="simple green">300em</code> while breakpoint <code class="simple green">500px</code> is still interpreted as <code class="simple green">500px.</code></p>
+
+
+        </div>
+    </section>
+
+    <hr class="section-separator">
+
+    <section>
+        <div class="container">
+            <header>
+                <h1>Architecture & Plugins</h1>
+            </header>
+
+            <p>One our of contributions is to allow ELQ to be easily extended with plugins. For example, if annotating HTML is undesired it is possible to create a plugin that instead parses CSS. Likewise, if adding breakpoint classes to element is undesired it is possible to create a plugin that does something else when a breakpoint state of an element has changed. In order to enable such powerful behavior altering by plugins, extensibility has been the main focus when designing the ELQ architecture.</p>
+
+            <h2>Plugin Definition Object</h2>
+            <p>A plugin is defined by a <code class="simple green">plugin definition object</code> and has the following structure:</p>
+            <script src="https://gist.github.com/nadangergeo/5cabaf45771c4e2ffa4e8fb949d33c0e.js"></script>
+
+            <p>All of the methods are invoked when registered to an ELQ instance. The <code>getName</code> and <code>getVersion</code> methods tells the name and version of the plugin. The <code>isCompatible</code> tells if the plugin is compatible with the ELQ instance that it is registered to. In the <code>make</code> method the plugin may initialize itself to the ELQ instance and return an object that defines the API accessible by ELQ and other plugins.</p>
+
+            <p>When necessary, ELQ invokes certain methods of the plugin API, if implemented, to let plugins decide the behavior of the system. Those methods are the following:</p>
+
+            <h3><code>activate(element)</code></h3>
+            <p>Called when an element is requested to be activated, in order for plugins to initialize listeners and element properties.</p>
+
+            <hr class="subsection-separator">
+
+            <h3><code>getElements(element)</code></h3>
+            <p>Called in order to let plugins reveal extra elements to be activated in addition to the given element.</p>
+
+            <hr class="subsection-separator">
+
+            <h3><code>getBreakpoints(element)</code></h3>
+            <p>Called to retrieve the current breakpoints of an element.</p>
+
+            <hr class="subsection-separator">
+
+            <h3><code>applyBreakpointStates(element, breakpointStates)</code></h3>
+            <p>Called to apply the given breakpoint states of an element.</p>            
+
+            <br>
+            <br>
+            <br>
+
+            <h3>In addition, plugins may also listen to the following ELQ events:</h3>
+
+            <h3><code class="blue">resize(element)</code></h3>
+            <p>Emitted when an ELQ element has changed size.</p>
+
+            <hr class="subsection-separator">
+
+            <h3><code class="blue">breakpointStatesChanged(element, breakpointStates)</code></h3>
+            <p>Emitted when an element has changed breakpoint states (e.g., when the width of an element changed from being narrower than a breakpoint to being wider).</p>
+        </div>
+    </section>
+
+
+    <hr class="section-separator">
+
+    <section>
+        <div class="container">
+            <header>
+                <h1>Flow</h1>
+            </header>
+
+            <p>There are two main flows of the ELQ system; activating an element and updating an element. When ELQ is requested to activate an element, the following flow occurs:</p>
+
+            <ol>
+                <li>The element is initialized by installing properties and a system handling listeners.</li>
+                <li>The <code>getElements</code> method of all plugins is called to retrieve any additional elements to activate. Additional elements will go through an own flow.</li>
+                <li>The <code>activate</code> method of all plugins is called so that plugin specific initialized may occur.</li>
+                <li>If any plugin has requested ELQ to detect resize events of the element, an resize detector is installed.</li>
+                <li>The element is passed through the update flow.</li>
+            </ol>
+
+            <p>The update flow is as follows:</p>
+
+            <ol>
+                <li>The <code>getBreakpoints</code> method of all plugins is called to retrieve all breakpoints of the element.</li>
+                <li>Breakpoint states are calculated.</li>
+                <li>If any state has changed since the previous update:
+                    <ol>
+                        <li>Cycle detection is performed.</li>
+                        <li>The <code>applyBreakpoints</code> method of all plugins is called.</li>
+                        <li>The <code class="blue">breakpointStatesChanged</code> event is emitted.</li>
+                    </ol>
+                </li>
+            </ol>
+
+            <p>Of course, there are options to disable some of the steps such as cycle detection and applying breakpoints. In addition to being triggered by the start flow and plugins, it is also triggered by element resize events.</p>
+
+
+        </div>
+    </section>
+
+    <hr class="section-separator">
+
+    <section>
+        <div class="container">
+            <header>
+                <h1>Example Plugin Implementation</h1>
+            </header>
+
+            <p>The API that enables developers to annotate breakpoints in HTML, as described in the usage section, is implemented as two plugins. One plugin parses the breakpoints of the element attributes and one plugin applies the breakpoint classes. The simplified code of the <code>make</code> method of the parsing plugin is as following:</p>
+
+            <script src="https://gist.github.com/nadangergeo/0b533a69b903f37590e4867deb2e8177.js"></script>
+
+            <p>The applying plugin simply implements the <code>applyBreakpoints</code> method to alter the <code class="simple green">className</code> property of the element by the given breakpoint states.</p>
+            
         </div>
     </section>
 

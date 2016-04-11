@@ -6,7 +6,7 @@ section {
         font-weight: 600;
     }
 
-    h1, h2, h3 {
+    h1, h2 {
         text-align: center;
     }
 
@@ -15,25 +15,37 @@ section {
         margin-right: auto;
     }
 
-    ul {
-        list-style: none;
-        padding: 0;
+    ul, ol {
         margin-bottom: @line-height-computed;
     }
 
     li {
-        font-size: 1.5em;
+        font-size: 1.5rem;
         font-weight: 600;
         line-height: 1.4;
-        padding-left: 1em; 
-        text-indent: -.7em;
     }
 
-    li:before {
-        content: "•";
-        color: @yellow; /* or whatever color you prefer */
-        padding-right: 7px;
-        font-size: 1.5em;
+    ul {
+        list-style: none;
+        padding: 0;
+
+        li {
+            padding-left: 1em; 
+            text-indent: -.7em;
+        }
+
+        li:before {
+            content: "•";
+            color: @yellow; /* or whatever color you prefer */
+            padding-right: 7px;
+            font-size: 1.5em;
+        }
+    }
+
+
+
+    > .container > .gist {
+        margin-bottom: @line-height-computed;
     }
 }
 
@@ -41,4 +53,11 @@ section {
     border: none;
     border-bottom: 5px solid @yellow;
     width: 240px;
+}
+
+.subsection-separator {
+    border: none;
+    border-bottom: 3px solid @bley2;
+    width: 120px;
+    margin: @line-height-computed 0 (1.5 * @line-height-computed) 0;
 }
