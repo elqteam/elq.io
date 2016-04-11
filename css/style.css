@@ -1063,3 +1063,10 @@ footer nav ul li:last-child {
 .tab-panes .active {
   display: block;
 }
+.note {
+  margin-top: 50px;
+  border: 5px solid #ffcc05;
+  padding: 50px;
+  color: #ffcc05;
+  font-weight: 600;
+}
