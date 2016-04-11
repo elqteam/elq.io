@@ -472,6 +472,13 @@ p {
   max-width: 777px;
   margin-bottom: 33px;
 }
+.hyphenate {
+  text-align: justify;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
+}
 h1,
 h2,
 h3 {
@@ -730,13 +737,6 @@ section > .container > .gist {
   margin-bottom: 60px;
   text-align: left;
 }
-.hyphens #intro p {
-  text-align: justify;
-  -webkit-hyphens: auto;
-  -moz-hyphens: auto;
-  -ms-hyphens: auto;
-  hyphens: auto;
-}
 #intro em {
   font-weight: 700;
   font-style: normal;
@@ -983,13 +983,6 @@ footer {
 footer p.ack {
   font-weight: 600;
   margin-bottom: 49.5px;
-}
-.hyphens footer p.ack {
-  text-align: justify;
-  -webkit-hyphens: auto;
-  -moz-hyphens: auto;
-  -ms-hyphens: auto;
-  hyphens: auto;
 }
 footer p.version {
   font-family: "anonymous-pro", courier;
