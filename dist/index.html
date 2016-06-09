@@ -4,14 +4,7 @@
     <title>Elq &ndash; The element queries library.</title>
     <link rel="stylesheet" type="text/css" href="css/style.css">
 
-    <script src="js/modernizr/modernizr.js"></script>
-    <script src="js/Chart.js/Chart.min.js"></script>
-    <script src="js/tabs/index.js"></script>
-    <script src="js/elq/elq.js"></script>
-    <script src="js/elq/elq-breakpoints.js"></script>
-    <script src="js/elq/elq-mirror.js"></script>
-    <script src="js/lib/hyph.js"></script>
-    <script src="js/main.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, minimal-ui">
 
 </head>
 <body>
@@ -25,7 +18,7 @@
             <p class="hyphenate">Ladies and gentle&shy;men, <em>meet ELQ</em> &ndash; The classy approach to Element Queries for modular and responsive components.</p>
 
             <div class="buttons">
-                <div class="button-version-wrapper">
+                <div class="button-labeled-wrapper">
                     <button class="btn btn-big btn-yellow">Install</button>
                     <label>v0.4.1</label>
                 </div>
@@ -70,21 +63,17 @@
                 <li><em class="green">Classy</em>.</li>
             </ul>
 
-            <p>For a very detailed description of ELQ and element queries, read the <a href="http://kth.diva-portal.org/smash/get/diva2:850230/FULLTEXT01.pdf" title="'ELQ: Extensible Element Queries for Modular Responsive Web Components' by Lucas Wiener.">Master's Thesis</a>. The API and architecture is somewhat outdated, but the Thesis is still relevant for understanding ELQ.</p>
+            <p>For a very detailed description of ELQ and element queries, read <a href="http://kth.diva-portal.org/smash/get/diva2:850230/FULLTEXT01.pdf" title="'ELQ: Extensible Element Queries for Modular Responsive Web Components' by Lucas Wiener.">the Master's Thesis</a>. The API and architecture is somewhat outdated, but the Thesis is still relevant for understanding ELQ.</p>
 
             <br>
             <br>
 
-            <center><a class="btn btn-blue" href="http://kth.diva-portal.org/smash/get/diva2:850230/FULLTEXT01.pdf" title="'ELQ: Extensible Element Queries for Modular Responsive Web Components' by Lucas Wiener.">Read Master's Thesis</a></center>
-
-            <br>
-            <br>
-
-            <div class="note">
-                <p>ELQ is currently in beta. Therefore, API changes may occur frequently. We really appreciate feedback such as GitHub issues and pull requests.</p>
-
-                <p>File size is a bit big at the moment (237 KB, 16 KB minified + gzip). In the future, we will remove the lodash dependency, reducing the size to something like (70 KB, 6 KB minified + gzip).</p>
-            </div>
+            <center>
+                <div class="button-labeled-wrapper">
+                    <a class="btn btn-blue" href="http://kth.diva-portal.org/smash/get/diva2:850230/FULLTEXT01.pdf" title="'ELQ: Extensible Element Queries for Modular Responsive Web Components' by Lucas Wiener.">Read the Master's Thesis</a>
+                    <label>(6 MB)</label>
+                </div>
+            </center>
         </div>
     </section>
 
@@ -177,7 +166,7 @@
 
             <p>When ELQ has processed the element, it will always have two classes, one for each breakpoint, that tells if the size of the element is greater or lesser than each breakpoint. For instance, if the element is 400 pixels wide, the element has the two classes <code>elq-min-width-300px</code> and <code>elq-max-width-500px</code>. Similarly, if the element is 200 pixels wide the element the classes are instead <code>elq-max-width-300px</code> and <code>elq-max-width-500px</code>. So for each breakpoint only the <code>min/max</code> part changes.</p>
 
-            <p>It may seem alien that the classes describe that the width of the element is both maximum 300 and 500 pixels. This is because we have taken a user-centric approach, so that when using the classes in CSS the API is similar to elememt queries. However, developers are free to change this API at will as <code>Elq</code> is plugin-based.</p>
+            <p>It may seem alien that the classes describe that the width of the element is both maximum 300 and 500 pixels. This is because we have taken a user-centric approach, so that when using the classes in CSS the API is similar to media queries. However, developers are free to change this API at will as <code>Elq</code> is plugin-based.</p>
 
             <p>Now that we have defined the breakpoints of the element, we can conditionally style it by using the classes:</p>
 
@@ -400,18 +389,25 @@
 
             <nav>
                 <ul>
-                    <li><a href="#">Docs</a></li>
+                    <li><a href="#">About</a></li>
                     <li><a href="#">Get started</a></li>
-                    <li><a href="#">Demos</a></li>
+                    <li><a href="#">Demo</a></li>
+                    <li><a href="#">Documentation</a></li>
                     <li><a href="#">Plugins</a></li>
                     <li><a href="#">Issues</a></li>
-                    <li><a href="#">About</a></li>
                 </ul>
             </nav>
 
         <p class="version">Currently v0.4.1</p>
 
     </footer>
+
+    <script src="js/tabs/index.js"></script>
+    <script src="js/elq/elq.js"></script>
+    <script src="js/elq/elq-breakpoints.js"></script>
+    <script src="js/elq/elq-mirror.js"></script>
+    <script src="js/lib/hyph.js"></script>
+    <script src="js/main.js"></script>
 
 </body>
 </html>
