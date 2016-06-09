@@ -9,6 +9,11 @@
 @bley2: lighten(#4c5863, 15%); //AKA grue (blueish gray);
 
 //typography
-@font-size-base: 24px;
-@line-height-base: 1.4;
-@line-height-computed:    floor((@font-size-base * @line-height-base)); // ~33px
+// @font-size-base: 24px;
+// @line-height-base: 1.4;
+// @line-height-computed:    floor((@font-size-base * @line-height-base)); // ~33px
+
+@line-height-computed: 1.5rem;
+@media screen and (min-width: 768px) {
+    @line-height-computed: 1.4rem;
+}

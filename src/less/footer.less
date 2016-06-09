@@ -3,7 +3,7 @@ footer {
     color: #fff;
 
     min-height: 100px;
-    padding: 120px 0;
+    padding: 5rem 0;
 
     .flex-display();
     .justify-content(center);
@@ -26,7 +26,7 @@ footer {
         font-family: "anonymous-pro", courier;
         // font-style: italic;
         text-align: center;
-        font-size: 1rem;
+        font-size: 0.666666rem;
         margin-bottom: 0;
     }
 
@@ -40,19 +40,33 @@ footer {
         ul {
             display: inline-block;
             list-style: none;
-            font-size: 1.5em;
+            font-size: 2em;
             font-weight: bold;
             text-align: center;
             margin-left: auto;
             margin-right: auto;
+            padding: 0;
+
+            // @media screen and (min-width: 480px) {
+            //     font-size: 1em;
+            // }
 
             li {
-                float: left;
-                margin-right: 20px;
+                margin-bottom: 20px;
 
                 &:last-child {
-                    margin-right: 0;
+                    margin-bottom: 0;
                 }
+
+                // @media screen and (min-width: 480px) {
+                //     float: left;
+                //     margin-right: 20px;
+                //     margin-bottom: 0;
+
+                //     &:last-child {
+                //         margin-right: 0;
+                //     }
+                // }
             }
         }
     }

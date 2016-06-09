@@ -1,5 +1,9 @@
 section {
-    padding: 120px 0;
+    padding: 4rem 0;
+
+    @media screen and (min-width: 768px) {
+        padding: 5rem 0;
+    }
 
     a {
         color: @blue;
@@ -20,7 +24,7 @@ section {
     }
 
     li {
-        font-size: 1.5rem;
+        font-size: 1rem;
         font-weight: 600;
         line-height: 1.4;
     }
@@ -52,12 +56,12 @@ section {
 .section-separator {
     border: none;
     border-bottom: 5px solid @yellow;
-    width: 240px;
+    width: 10rem;
 }
 
 .subsection-separator {
     border: none;
     border-bottom: 3px solid @bley2;
-    width: 120px;
+    width: 5rem;
     margin: @line-height-computed 0 (1.5 * @line-height-computed) 0;
 }

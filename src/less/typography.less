@@ -1,16 +1,22 @@
-body {
-    font-family: "proxima-nova", sans-serif;
+html {
     font-size: 100%;
-    color: @bley2;
+    line-height: 1.5;
 
+    @media screen and (min-width: 768px) {
+        font-size: 150%;
+        line-height: 1.4;
+    }
+}
+
+body {
+    font-family: "proxima-nova", sans-serif;    
+    color: @bley2;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    -moz-osx-font-smoothing: grayscale;    
 }
 
 p {
-    font-size: 1.5rem;
-    line-height: 1.4;
     max-width: 777px;
     margin-bottom: @line-height-computed;
 }
@@ -30,21 +36,35 @@ h1, h2, h3 {
 
 h1 {
     color: @blue;
-    font-size: 3rem;
+    font-size: 2rem;
     // margin-top: @line-height-computed;
-    margin-bottom: 4 * @line-height-computed;
+    // margin-bottom: 4 * @line-height-computed;
+
+    margin-bottom: 4rem;
+
+    @media screen and (min-width: 768px) {
+        margin-bottom: 5rem;
+    }
 }
 
 h2 {
-    font-size: 2rem;
+    font-size: 1.333333rem;
     color: @yellow;
     margin-bottom: 0;
     line-height: 1;
+
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+
+    @media screen and (min-width: 768px) {
+        margin-top: 2.5rem;
+        margin-bottom: 2.5rem;
+    }
 }
 
 h3 {
     color: @bley;
-    font-size: 1.5rem;
+    font-size: 1rem;
     line-height: 1.4;
 }
 
@@ -106,6 +126,14 @@ em {
 .bley { color: @bley; }
 .bley2 { color: @bley2; }
 
+
+ol, ul {
+    padding-left: 20px;
+
+    @media screen and (min-width: 768px) {
+        padding-left: 40px;
+    }
+}
 
 ol {
     list-style: none;

@@ -1,23 +1,26 @@
 #intro {
     background-color: @blue;
     color: @yellow;
-    padding: 120px 0;
+    padding: 2.5rem 0;
     .flex-display();
     .justify-content(center);
     .align-items(center);
+
+    @media screen and (min-width: 375px) {
+      padding: 5rem 0;
+    }
 
     .container {
         text-align: center;
     }
 
-
     header {
-        margin-bottom: 60px;
+        margin-bottom: 2.5rem;
 
         text-align: center;
 
         .logo {
-            width: 240px;
+            width: 10rem;
             max-width: 100%;
             height: auto;
         }
@@ -26,22 +29,56 @@
     p {
         color: #fff;
         max-width: 555px;
-        font-size: 2.08rem;
+        font-size: 7.5vw;
         line-height: 1.1;
         letter-spacing: -0.03em;
         font-weight: 700;
         margin-left: auto;
         margin-right: auto;
-        margin-bottom: 60px;
+        margin-bottom: 2.5rem;
         text-align: left;
 
-        // .hyphens & {
-        //     text-align: justify;
-        //     -webkit-hyphens: auto;
-        //     -moz-hyphens: auto;
-        //     -ms-hyphens: auto;
-        //     hyphens: auto;
-        // }
+        @media screen and (min-width: 350px) {
+          font-size: 5.7vw;
+        }
+
+        @media screen and (min-width: 375px) {
+          font-size: 5vw;
+        }
+
+        @media screen and (min-width: 429px) {
+          font-size: 5.17vw;
+        }
+
+        @media screen and (min-width: 645px) {
+          font-size: 5vw;
+        }
+
+        @media screen and (min-width: 668px) {
+          font-size: 4.9vw;
+        }
+
+        @media screen and (min-width: 680px) {
+          font-size: 4.85vw;
+        }
+
+        @media screen and (min-width: 689px) {
+          font-size: 4.75vw;
+        }
+
+        @media screen and (min-width: 700px) {
+          font-size: 4.5vw;
+        }
+
+        @media screen and (min-width: 740px) {
+          font-size: 4.25vw;
+        }
+
+
+
+        @media screen and (min-width: 768px) {
+          font-size: 1.3866666667rem;
+        }
     }
 
     em {
@@ -50,32 +87,9 @@
         color: @yellow;
     }
 
-    .buttons {
-        .button-version-wrapper {
-            margin-right: 5px;
-        }
-
-        button {
-            min-width: 150px;
-        }
-    }
-
-    .button-version-wrapper {
-        display: inline-block;
-        padding-bottom: 24px;
-        position: relative;
-
+    .button-labeled-wrapper {
         label {
-            font-family: "anonymous-pro", courier;
-            font-weight: bold;
-            display: block;
-            width: 100%;
-            text-align: center;
-            position: absolute;
-            bottom: 0;
-
             color: #fff;
-            opacity: 0.33;
         }
     }
 }
