@@ -1072,6 +1072,63 @@ section > .container > .gist {
     transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, -100, 0, 1);
   }
 }
+.nav-button {
+  position: fixed;
+  z-index: 1000;
+  top: 30px;
+  right: 20px;
+}
+.nav-button span {
+  position: relative;
+  display: block;
+  width: 30px;
+  height: 3px;
+  background-color: #ffcc05;
+  -webkit-transition: background-color 200ms ease-in-out;
+  -moz-transition: background-color 200ms ease-in-out;
+  -ms-transition: background-color 200ms ease-in-out;
+  -o-transition: background-color 200ms ease-in-out;
+}
+.nav-button span:before,
+.nav-button span:after {
+  display: block;
+  width: 30px;
+  height: 3px;
+  background-color: #ffcc05;
+  -webkit-transition: all 200ms ease-in-out;
+  -moz-transition: all 200ms ease-in-out;
+  -ms-transition: all 200ms ease-in-out;
+  -o-transition: all 200ms ease-in-out;
+  content: '';
+  position: absolute;
+  left: 0;
+}
+.nav-button span:before {
+  top: -9px;
+}
+.nav-button span:after {
+  bottom: -9px;
+}
+.nav-button--is-open span {
+  background-color: rgba(255, 204, 5, 0);
+}
+.nav-button--is-open span:before,
+.nav-button--is-open span:after {
+  bottom: auto;
+  top: auto;
+}
+.nav-button--is-open span:before {
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+}
+.nav-button--is-open span:after {
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+}
 footer {
   background-color: #005093;
   color: #fff;
