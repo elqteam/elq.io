@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     var elq = Elq();
     elq.activate(document.querySelectorAll("[elq]"));
 
-    var tabContainers=document.querySelectorAll('.tab-container');
+    var tabContainers = document.querySelectorAll(".tab-container");
     forEach(tabContainers, function (container) {
         tabs(container);
     });
