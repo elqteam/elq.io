@@ -1077,6 +1077,7 @@ section > .container > .gist {
   z-index: 1000;
   top: 30px;
   right: 20px;
+  cursor: pointer;
 }
 .nav-button span {
   position: relative;
