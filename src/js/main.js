@@ -20,6 +20,8 @@ function initResizeButtons(elq) {
         var target = document.getElementById(targetId);
 
         var sizesString = button.getAttribute("resize-sizes");
+        var dimensions = button.getAttribute("resize-dimensions") || "xy";
+
         var sizes = sizesString.split(" ").map(Number).filter(not.bind(null, isNaN));
         sizes.sort(function (a, b) { return a - b });
 
@@ -72,8 +74,16 @@ function initResizeButtons(elq) {
                 newWidth = getNewWidth(width);
             }
 
-            target.style.width = newWidth;
-            target.style.height = newWidth;
+            if(dimensions === "xy") {
+                target.style.width = newWidth;
+                target.style.height = newWidth;
+            } else if(dimensions === "x") {
+                target.style.width = newWidth;
+            } else if(dimensions === "y") {
+                target.style.height = newWidth;
+            } else {
+                console.error("invalid dimensions attribute");
+            }
         });
     });
 }

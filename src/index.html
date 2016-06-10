@@ -214,19 +214,63 @@
                 </div>
             </div>
 
-            <p>This API is sufficient for applications that do not need nested breakpoint elements, and similar features is provided by related libraries. However, using such API in responsive modules still limits the reusability since the modules then may not exist in an outer responsive context.</p>
+            <h2>Nested modules</h2>
 
-            <p>The reason this API is not sufficient for nested modules is because there is no way to limit the CSS matching search of the selectors. The selector <code>.foo.elq-max-width-500px p</code> specifies that all paragraph elements should have white text if any ancestor breakpoints element is above 500 pixels wide. Since the ancestor selector may match elements outside of the module, such selectors are dangerous to use in the context of responsive modules. The problem may be somewhat reduced by more specific selectors and such, but it cannot be fully solved for arbitrary styling.</p>
+            <p>Regarding nested modules… things start's getting a little more complicated when you need to have control over the styling of a modules subelements with regards to the modules breakpoints. It is a bit tricky to scope the styling, but luckily not impossible. Consider the following example:</p>
 
-            <p>To solve this problem, we provide a plugin that let us define elements to "mirror" the breakpoints classes of the nearest ancestor breakpoints element. Then, the conditional style of the mirror element may be written as a combinatory selector that is relative to the nearest ancestor breakpoints element.</p>
+            <div class="tab-container">
+                <div class="tabs">
+                    <a class="tab active">HTML</a>
+                </div>
+                <div class="tab-panes">
+                    <div class="tab-pane active">
+                        <script src="https://gist.github.com/nadangergeo/ba3aa5476816534405e2b178801d850f.js"></script>
+                    </div>
+                </div>
+            </div>
 
-            <p>Let's expand our example HTML to include to nested modules, that uses the <code>mirror</code> API.</p>
+            <p>The selector <code>.block.elq-min-width-480px > .block__element</code> would work to select a subelement in modules that have a width of at least 480px. But this is not a nice selector, since it is dependentent on the structure of the DOM.</p>
 
-            <script src="https://gist.github.com/nadangergeo/d8f40075e5619f9904bb333278c038e1.js"></script>
+            <p>So, what alternatives are left? Well, you could of course activate ELQ on the subelements, which would give you total control… But in most cases, you just want the subelements to have the same breakpoint-classes as the whole module. That's why ELQ provides a plugin that lets you define elements to "mirror" the breakpoints classes of the nearest ancestor breakpoints element.</p>
 
-            <p>As the paragraph elements are mirroring the nearest .foo ancestor, we can now write CSS in the following encapsulated way:</p>
+            <p>This is how you would use the <code>mirror</code> API.</p>
 
-            <script src="https://gist.github.com/nadangergeo/be1df092c0b0d470320fedc8e644f323.js"></script>
+            <div class="tab-container">
+                <div class="tabs">
+                    <a class="tab active">HTML</a>
+                    <a class="tab">LESS</a>
+                    <a class="tab">CSS</a>
+                </div>
+                <div class="tab-panes">
+                    <div class="tab-pane active">
+                        <script src="https://gist.github.com/nadangergeo/32fb527117f030f2d9b1bde8894fd207.js"></script>
+                    </div>
+                    <div class="tab-pane">
+                        <script src="https://gist.github.com/nadangergeo/64a62cb0624ea4e5471b18542e511992.js"></script>
+                    </div>
+                    <div class="tab-pane">
+                        <script src="https://gist.github.com/nadangergeo/1f9322217953dc212adb94051c1f6cc5.js"></script>
+                    </div>
+                </div>
+            </div>
+
+            <h2>And this is the result</h2>
+
+            <center><button resize-target="demo-box-3" resize-sizes="130 195 260" resize-dimensions="x" class="btn btn-blue">Resize</button></center>
+            <br>
+
+            <div id="demo-box-3" class="demo-box">
+                <div class="block" elq elq-breakpoints elq-breakpoints-widths="80 145 210">
+                    <div class="block__element" elq elq-mirror>Hello</div>
+                    
+                    <div class="block" elq elq-breakpoints elq-breakpoints-widths="80 145 210">
+                        <div class="block__element" elq elq-mirror>World!</div>
+                    </div>
+                </div>
+            </div>
+
+            <br>
+            <h2>More to come…</h2>
 
             <p>Since we in the previous examples have annotated elements manually, the power and flexibility of the API have not been properly displayed. Only when combined with JavaScript, things get more interesting. To be continued...</p>
         </div>

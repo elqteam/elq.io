@@ -1,0 +1,33 @@
+.block {
+    font-weight: 600;
+    text-align: left;
+    
+    .block {
+        /* So that the nested module behaves differently */
+        width: 80%;
+    }
+
+    //elements
+    &__element {
+        line-height: 1.2;
+        font-size: 0.5rem;
+        color: @blue;
+
+        // element queries for subelements
+
+        &.elq-min-width-80px {
+            font-size: 1rem;
+            color: @lightblue;
+        }
+
+        &.elq-min-width-145px {
+            font-size: 1.5rem;
+            color: @green;
+        }
+
+        &.elq-min-width-210px {
+            font-size: 2.5rem;
+            color: @yellow;
+        }
+    }
+}
