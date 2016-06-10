@@ -1,0 +1,59 @@
+@line-width: 30px;
+@line-thickness: 3px;
+@line-spacing: 6px;
+
+.line() {
+    display: block;
+    width: @line-width;
+    height: @line-thickness;
+    background-color: @yellow;
+}
+
+.nav-button {
+    position: fixed;
+    z-index: 1000;
+    top: 30px;
+    right: 20px;
+
+    span {
+        position: relative;
+        .line();
+        .transition(background-color 200ms ease-in-out);
+
+        &:before, &:after {
+            .line();
+            .transition(all 200ms ease-in-out);
+            content: '';
+            position: absolute;
+            left: 0;
+        }
+
+        &:before {
+            top: -(@line-thickness + @line-spacing);
+        }
+
+        &:after {
+            bottom: -(@line-thickness + @line-spacing);
+        }
+    }
+
+    &--is-open {
+
+        span {
+            background-color: fade(@yellow, 0%);
+
+            &:before, &:after {
+                bottom: auto;
+                top: auto;
+            }
+
+            &:before {
+                .rotate(-45deg);
+            }
+
+            &:after {
+                .rotate(45deg);
+            }
+        }
+    }
+}

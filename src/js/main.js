@@ -10,6 +10,17 @@ document.addEventListener("DOMContentLoaded", function(event) {
     forEach(tabContainers, function (container) {
         tabs(container);
     });
+
+    var navButton = document.querySelector(".nav-button");
+    navButton.addEventListener("click", function(event){
+        if(hasClass(navButton, "nav-button--is-open")) {
+            event.preventDefault();
+            window.history.pushState("intro", "", '/');
+            window.scrollTo(0, 0);
+        }
+
+        toggleClass(navButton, "nav-button--is-open");
+    });
 });
 
 function initResizeButtons(elq) {
@@ -133,4 +144,31 @@ function forEachRight(collection, callback) {
 
 function not(fn, value) {
     return !fn(value);
+}
+
+function hasClass(el, className) {
+    console.log(el);
+    console.log(className);
+    console.log(el.classList);
+
+    if (el.classList)
+      return el.classList.contains(className);
+    else
+      return new RegExp('(^| )' + className + '( |$)', 'gi').test(el.className);
+}
+
+function toggleClass(el, className) {
+    if (el.classList) {
+      el.classList.toggle(className);
+    } else {
+      var classes = el.className.split(' ');
+      var existingIndex = classes.indexOf(className);
+
+      if (existingIndex >= 0)
+        classes.splice(existingIndex, 1);
+      else
+        classes.push(className);
+
+      el.className = classes.join(' ');
+    }
 }
