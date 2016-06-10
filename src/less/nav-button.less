@@ -12,9 +12,17 @@
 .nav-button {
     position: fixed;
     z-index: 1000;
-    top: 30px;
+    top: 25px;
     right: 20px;
     cursor: pointer;
+    display: block;
+
+    @media screen and (min-width: 768px) {
+        top: 30px;
+        right: 30px;
+    }
+
+    padding: (@line-spacing + @line-thickness) 0;
 
     span {
         position: relative;
