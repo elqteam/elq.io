@@ -4,9 +4,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     initResizeButtons();
 
     var elq = Elq();
-    elq.use(elqBreakpoints);
-    elq.use(elqMirror);
-    elq.start(document.querySelectorAll("[elq]"));
+    elq.activate(document.querySelectorAll("[elq]"));
 
     var tabContainers=document.querySelectorAll('.tab-container');
     forEach(tabContainers, function (container) {

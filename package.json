@@ -19,7 +19,7 @@
     "url": "https://github.com/wnr/elq.io/issues"
   },
   "dependencies": {
-    "elq": "*",
+    "elq": "^0.4.3",
     "normalize.css": "^4.1.1"
   },
   "devDependencies": {
