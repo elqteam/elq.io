@@ -1892,35 +1892,14 @@ module.exports = function BreakpointStateCalculator(options) {
     };
 };
 
-},{"./utils":34}],19:[function(require,module,exports){
+},{"./utils":27}],19:[function(require,module,exports){
 "use strict";
 
 var Elq = require("../elq");
 
-// Core plugins
-var elqBreakpoints    = require("../plugin/elq-breakpoints/elq-breakpoints.js");
-var elqMinMaxApplyer  = require("../plugin/elq-minmax-applyer/elq-minmax-applyer.js");
-var elqMirror         = require("../plugin/elq-mirror/elq-mirror.js");
+module.exports = Elq;
 
-// Proxy the Constructor so that we can register plugins when an instance is created.
-module.exports = function DefaultElq(options) {
-    var elq = Elq.apply(null, arguments);
-
-    // Intercept special plugin options.
-    options         = options || {};
-    var defaultUnit = options.defaultUnit || "px";
-
-    elq.use(elqBreakpoints, {
-        defaultUnit: defaultUnit
-    });
-
-    elq.use(elqMinMaxApplyer);
-    elq.use(elqMirror);
-
-    return elq;
-};
-
-},{"../elq":22,"../plugin/elq-breakpoints/elq-breakpoints.js":28,"../plugin/elq-minmax-applyer/elq-minmax-applyer.js":30,"../plugin/elq-mirror/elq-mirror.js":31}],20:[function(require,module,exports){
+},{"../elq":21}],20:[function(require,module,exports){
 "use strict";
 
 module.exports = function CycleDetector(idHandler, options) {
@@ -1983,23 +1962,6 @@ module.exports = function CycleDetector(idHandler, options) {
 };
 
 },{}],21:[function(require,module,exports){
-"use strict";
-
-var utils = module.exports = {};
-
-utils.getAttribute = function (element, attr) {
-    if (element.hasAttribute(attr)) {
-        return element.getAttribute(attr);
-    }
-
-    return element.getAttribute("data-" + attr);
-};
-
-utils.hasAttribute = function (element, attr) {
-    return utils.getAttribute(element, attr) !== null;
-};
-
-},{}],22:[function(require,module,exports){
 "use strict";
 
 var packageJson                 = require("../package.json");
@@ -2300,7 +2262,7 @@ function createBatchProcessorConstructorWithDefaultOptions(globalOptions) {
     return createBatchProcessorOptionsProxy;
 }
 
-},{"../package.json":17,"./breakpoint-state-calculator":18,"./cycle-detector":20,"./id-generator":23,"./id-handler":24,"./plugin-handler":26,"./reporter":32,"./style-resolver":33,"./utils":34,"batch-processor":1,"element-resize-detector":7}],23:[function(require,module,exports){
+},{"../package.json":17,"./breakpoint-state-calculator":18,"./cycle-detector":20,"./id-generator":22,"./id-handler":23,"./plugin-handler":24,"./reporter":25,"./style-resolver":26,"./utils":27,"batch-processor":1,"element-resize-detector":7}],22:[function(require,module,exports){
 "use strict";
 
 module.exports = function () {
@@ -2320,7 +2282,7 @@ module.exports = function () {
     };
 };
 
-},{}],24:[function(require,module,exports){
+},{}],23:[function(require,module,exports){
 "use strict";
 
 module.exports = function (idGenerator) {
@@ -2360,14 +2322,7 @@ module.exports = function (idGenerator) {
     };
 };
 
-},{}],25:[function(require,module,exports){
-"use strict";
-
-var Elq = require("./bundle/default");
-
-module.exports = Elq;
-
-},{"./bundle/default":19}],26:[function(require,module,exports){
+},{}],24:[function(require,module,exports){
 "use strict";
 
 var _ = {};
@@ -2509,325 +2464,7 @@ module.exports = function PluginHandler(reporter) {
     };
 };
 
-},{"./utils":34,"lodash.isfunction":14,"lodash.isobject":15,"lodash.isstring":16}],27:[function(require,module,exports){
-"use strict";
-
-var BP_UNITS = {};
-BP_UNITS.PX = "px";
-BP_UNITS.EM = "em";
-BP_UNITS.REM = "rem";
-
-function isUnitTypeValid(val) {
-    for (var prop in BP_UNITS) {
-        if (BP_UNITS.hasOwnProperty(prop) && BP_UNITS[prop] === val) {
-            return true;
-        }
-    }
-    return false;
-}
-
-module.exports = function BreakpointParser(options) {
-    options = options || {};
-    var reporter = options.reporter;
-    var defaultUnit = options.defaultUnit;
-    var styleResolver = options.styleResolver;
-    var elementUtils = options.elementUtils;
-
-    function parseBreakpoints(element) {
-        function getBreakpoints(element, dimension) {
-            function getFromMainAttr(element, dimension) {
-                var breakpoints = elementUtils.getAttribute(element, "elq-breakpoints-" + dimension + "s");
-
-                if (!breakpoints) {
-                    return [];
-                }
-
-                breakpoints = breakpoints.replace(/\s+/g, " ").trim();
-                breakpoints = breakpoints.split(" ");
-
-                breakpoints = breakpoints.map(function (breakpointString) {
-                    var valueMatch = breakpointString.match(/^([0-9]+)/g);
-                    // a breakpoint value must exist
-                    if (!valueMatch) {
-                        reporter.error("Invalid breakpoint: " + breakpointString + " for element ", element);
-                    }
-
-                    var unitMatch = breakpointString.match(/([a-zA-Z]+)$/g); // the unit is allowed to be omitted
-                    var unit = unitMatch ? unitMatch[0] : defaultUnit;
-
-                    if (!isUnitTypeValid(unit)) {
-                        reporter.error("Elq breakpoint found with invalid unit: " + unit + " for element ", element);
-                    }
-
-                    var value = parseFloat(valueMatch[0]);
-
-                    return {
-                        dimension: dimension,
-                        value: value,
-                        type: unit
-                    };
-                });
-
-                return breakpoints;
-            }
-
-            var breakpoints = getFromMainAttr(element, dimension);
-            return breakpoints;
-        }
-
-        var widthBreakpoints = getBreakpoints(element, "width");
-        var heightBreakpoints = getBreakpoints(element, "height");
-
-        return widthBreakpoints.concat(heightBreakpoints);
-    }
-
-    return {
-        parseBreakpoints: parseBreakpoints
-    };
-};
-
-},{}],28:[function(require,module,exports){
-"use strict";
-
-var packageJson = require("../../../package.json");
-var BreakpointsParser = require("./breakpoint-parser.js");
-var StyleResolver = require("../../style-resolver.js"); // TODO: Not nice that this is fetching out of own structure like this.
-var elementUtils = require("../../element-utils.js");
-
-module.exports = {
-    getName: function () {
-        return "elq-breakpoints";
-    },
-    getVersion: function () {
-        return packageJson.version;
-    },
-    isCompatible: function (elq) {
-        return true; // Since this plugin lives in the elq repo, it is assumed to always be compatible.
-    },
-    make: function (elq, options) {
-        var styleResolver       = StyleResolver();
-        var breakpointsParser   = BreakpointsParser({
-            defaultUnit: options.defaultUnit,
-            reporter: elq.reporter,
-            styleResolver: styleResolver,
-            elementUtils: elementUtils
-        });
-
-        function activate(element) {
-            if (!elementUtils.hasAttribute(element, "elq-breakpoints")) {
-                return;
-            }
-
-            // All elq-breakpoints elements need to detect resizes and also update breakpoints.
-            element.elq.resizeDetection = true;
-            element.elq.updateBreakpoints = true;
-
-            // Enable applyBreakpoints unless some other system explicitly has disabled it.
-            if (element.elq.applyBreakpoints !== false) {
-                element.elq.applyBreakpoints = true;
-            }
-
-            if (elementUtils.getAttribute(element, "elq-breakpoints").indexOf("notcyclic") !== -1) {
-                element.elq.cycleCheck = false;
-            } else {
-                // Enable cycle check unless some other system explicitly has disabled it.
-                if (element.elq.cycleCheck !== false) {
-                    element.elq.cycleCheck = true;
-                }
-            }
-        }
-
-        function getBreakpoints(element) {
-            return breakpointsParser.parseBreakpoints(element);
-        }
-
-        return {
-            activate: activate,
-            getBreakpoints: getBreakpoints
-        };
-    }
-};
-
-},{"../../../package.json":17,"../../element-utils.js":21,"../../style-resolver.js":33,"./breakpoint-parser.js":27}],29:[function(require,module,exports){
-"use strict";
-
-var forEach = require("../../utils").forEach;
-
-module.exports = function BreakpointStateApplyer() {
-    function applyBreakpointStates(element, breakpointStates) {
-        function sortBreakpointStates(breakpointStates) {
-            return breakpointStates.sort(function (bp1, bp2) {
-                return bp1.breakpoint.pixelValue - bp2.breakpoint.pixelValue;
-            });
-        }
-
-        function getClasses(breakpointStates, dimension) {
-            var dimensionBreakpointStates = breakpointStates[dimension];
-
-            var classes = [];
-
-            if (!dimensionBreakpointStates.length) {
-                return classes;
-            }
-
-            // Sort for the visual aspect of having the classes in order in the html
-            dimensionBreakpointStates = sortBreakpointStates(dimensionBreakpointStates);
-
-            forEach(dimensionBreakpointStates, function (breakpointState) {
-                // Direction "min" is inclusive, which means that it is active when the width is over or equal the breakpoint
-
-                var dir = "min";
-
-                if (breakpointState.under) {
-                    dir = "max";
-                }
-
-                var dimension = breakpointState.breakpoint.dimension;
-                var value = breakpointState.breakpoint.value;
-                var type = breakpointState.breakpoint.type;
-
-                classes.push("elq-" + dir + "-" + dimension + "-" + value + type);
-            });
-
-            return classes;
-        }
-
-        //TODO: This function should maybe take into consideration if the target element has the noclasses option set.
-        function updateBreakpointClasses(element, breakpointClasses) {
-            var classes = element.className;
-
-            //Remove all old breakpoints.
-            var breakpointRegexp = new RegExp("elq-(min|max)-(width|height)-[0-9]+[a-zA-Z]+" , "g");
-            classes = classes.replace(breakpointRegexp, "");
-
-            //Add new classes
-            classes += " " + breakpointClasses;
-
-            //Format classes before putting it in.
-            classes = classes.replace(/\s+/g, " ").trim();
-
-            element.className = classes;
-        }
-
-        var widthClasses = getClasses(breakpointStates, "width");
-        var heightClasses = getClasses(breakpointStates, "height");
-        var breakpointClasses = widthClasses.join(" ") + " " + heightClasses.join(" ");
-
-        updateBreakpointClasses(element, breakpointClasses);
-    }
-
-    return {
-        applyBreakpointStates: applyBreakpointStates
-    };
-};
-
-},{"../../utils":34}],30:[function(require,module,exports){
-"use strict";
-
-var packageJson = require("../../../package.json");
-var BreakpointStateApplyer = require("./breakpoint-state-applyer.js");
-var StyleResolver = require("../../style-resolver.js"); // TODO: Not nice that this is fetching out of own structure like this.
-
-module.exports = {
-    getName: function () {
-        return "elq-minmax-classes";
-    },
-    getVersion: function () {
-        return packageJson.version;
-    },
-    isCompatible: function (elq) {
-        return true; // Since this plugin lives in the elq repo, it is assumed to always be compatible.
-    },
-    make: function (elq, options) {
-        var breakpointApplyer = BreakpointStateApplyer();
-
-        function applyBreakpointStates(element, breakpointStates) {
-            breakpointApplyer.applyBreakpointStates(element, breakpointStates);
-        }
-
-        return {
-            applyBreakpointStates: applyBreakpointStates
-        };
-    }
-};
-
-},{"../../../package.json":17,"../../style-resolver.js":33,"./breakpoint-state-applyer.js":29}],31:[function(require,module,exports){
-"use strict";
-
-var packageJson = require("../../../package.json"); // In the future this plugin might be broken out to an independent repo. For now it has the same version number as elq.
-var elementUtils = require("../../element-utils.js");
-
-module.exports = {
-    getName: function () {
-        return "elq-mirror";
-    },
-    getVersion: function () {
-        return packageJson.version;
-    },
-
-    isCompatible: function (elq) {
-        return true; // Since this plugin lives in the elq repo, it is assumed to always be compatible.
-    },
-    make: function (elq) {
-        function mirror(mirrorElement, targetElement) {
-            // Mirror applyBreakpointStates overrides any applyBreakpointStates since a mirror element may have breakpoints as well (that doesn't get applied).
-            // Therefore, applyBreakpointStates must be disable for mirror elements.
-            mirrorElement.elq.applyBreakpoints = false;
-
-            if (mirrorElement.elq.mirror) {
-                // This element is already mirroring an element.
-
-                if (mirrorElement.elq.mirror.targetId === targetElement.elq.id) {
-                    // It is the same object, do nothing.
-                    return;
-                } else {
-                    // A new object is to be mirrored. This is currently unsupported, but shall probably be supported in the future.
-                    elq.reporter.error("Cannot change mirror target.", mirrorElement);
-                }
-            }
-
-            mirrorElement.elq.mirror = {
-                targetId: targetElement.elq.id
-            };
-
-            elq.listenTo(targetElement, "breakpointStatesChanged", function mirrorNewBreakpointStates(targetElement, newBreakpointStates) {
-                elq.pluginHandler.callMethods("applyBreakpointStates", [mirrorElement, newBreakpointStates]);
-            });
-        }
-
-        function activate(element) {
-            function getElqParentElement(mirrorElement) {
-                var currentElement = mirrorElement.parentNode;
-
-                while (currentElement && currentElement.hasAttribute) {
-                    if (elementUtils.hasAttribute(currentElement, "elq-breakpoints")) {
-                        return currentElement;
-                    }
-
-                    currentElement = currentElement.parentNode;
-                }
-
-                //If this is reached, it means that there was no elq-breakpoints parent found.
-                elq.reporter.error("Mirror elements require an elq-breakpoints ancestor. This error can probably be resolved by making body an elq-breakpoints element. Error caused by mirror element:", mirrorElement);
-            }
-
-            if (!elementUtils.hasAttribute(element, "elq-mirror")) {
-                return;
-            }
-
-            var breakpointElement = getElqParentElement(element);
-
-            mirror(element, breakpointElement);
-        }
-
-        return {
-            activate: activate,
-            mirror: mirror
-        };
-    }
-};
-
-},{"../../../package.json":17,"../../element-utils.js":21}],32:[function(require,module,exports){
+},{"./utils":27,"lodash.isfunction":14,"lodash.isobject":15,"lodash.isstring":16}],25:[function(require,module,exports){
 "use strict";
 
 /* global console: false */
@@ -2863,7 +2500,7 @@ module.exports = function (quiet) {
     return reporter;
 };
 
-},{}],33:[function(require,module,exports){
+},{}],26:[function(require,module,exports){
 "use strict";
 
 module.exports = function StyleResolver() {
@@ -2874,7 +2511,7 @@ module.exports = function StyleResolver() {
     };
 };
 
-},{}],34:[function(require,module,exports){
+},{}],27:[function(require,module,exports){
 "use strict";
 
 var utils = module.exports = {};
@@ -2921,5 +2558,5 @@ utils.unique = function (collection, hashFunction) {
     return output;
 };
 
-},{}]},{},[25])(25)
+},{}]},{},[19])(19)
 });
