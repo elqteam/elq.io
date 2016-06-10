@@ -1,4 +1,5 @@
 .tab-container {
+    position: relative;
     margin-bottom: 1.5rem;
 }
 
@@ -13,9 +14,22 @@
     border-bottom: 0;
     padding-bottom: 20px;
 
+    .box-sizing(border-box);
+    display: block;
+
     &.active {
         background-color: @blue;
         color: @yellow;
+    }
+
+    @media screen and (max-width: 384px) {
+        &:hover, &:active, &:focus {
+            .transform(none);
+        }
+    }
+
+    @media screen and (min-width: 384px) {
+        display: inline-block;
     }
 }
 
