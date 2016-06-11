@@ -18,6 +18,7 @@ module.exports = function(grunt) {
             main: {
                 files: [
                     { expand: true, flatten: true, cwd: "src/", src: ["CNAME"], dest: "dist/" },
+                    { expand: true, flatten: true, cwd: "src/", src: ["favicon.ico"], dest: "dist/" },
                     { expand: true, cwd: "src/", src: ["*.html"], dest: "dist/" },
                     { expand: true, cwd: "src/", src: ["js/**/*.js"], dest: "dist/" },
                     { expand: true, cwd: "assets/", src: ["**/*.*"], dest: "dist/" },
