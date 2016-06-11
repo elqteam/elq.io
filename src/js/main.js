@@ -93,7 +93,15 @@ function initResizeButtons(elq) {
 
             var newWidth = getNewWidth(width);
 
-            if (!newWidth) {
+            var container = target.parentElement;
+            var style = window.getComputedStyle(container, null);
+            var containerPadding = parseInt(style.paddingLeft, 10) + parseInt(style.paddingRight, 10);
+            var containerWidth = parseInt(style.getPropertyValue("width"), 10) - containerPadding;
+
+            if(newWidth > containerWidth){
+                direction = "backward";
+                newWidth = getNewWidth(width);
+            } else if (!newWidth) {
                 if (direction === "backward") {
                     direction = "forward";
                 } else {
@@ -165,10 +173,6 @@ function not(fn, value) {
 }
 
 function hasClass(el, className) {
-    console.log(el);
-    console.log(className);
-    console.log(el.classList);
-
     if (el.classList)
       return el.classList.contains(className);
     else
