@@ -11,6 +11,24 @@ document.addEventListener("DOMContentLoaded", function(event) {
         tabs(container);
     });
 
+    // var scrollToButtons = document.querySelectorAll("a[href^='#']");
+
+    // forEach(scrollToButtons, function(button) {
+    //     button.addEventListener("click", function(event){
+    //         console.log('lol');
+
+    //         //prevent the default action for the click event
+    //         event.preventDefault();
+
+    //         var targetId = event.target.getAttribute("href").substring(1);
+
+    //         //get the anchor link
+    //         var target = document.getElementById(targetId);
+
+    //         smoothScroll(target, 1000);
+    //     })
+    // });
+
     var navButton = document.querySelector(".nav-button");
     navButton.addEventListener("click", function(event){
         if(hasClass(navButton, "nav-button--is-open")) {
