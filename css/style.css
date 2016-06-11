@@ -560,6 +560,9 @@ code.simple {
 code.simple.green {
   color: #85b70d;
 }
+code.smaller {
+  font-size: 0.875rem;
+}
 em {
   font-weight: 700;
   font-style: normal;
