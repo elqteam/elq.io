@@ -5,14 +5,16 @@
 
 .tabs {
     position: relative;
-    margin-bottom: -10px;
+
+    @media screen and (min-width: 384px) {
+        margin-bottom: -10px;
+    }
 }
 
 .tab {
     .btn;
     .btn-blue;
     border-bottom: 0;
-    padding-bottom: 20px;
 
     .box-sizing(border-box);
     display: block;
@@ -30,6 +32,7 @@
 
     @media screen and (min-width: 384px) {
         display: inline-block;
+        padding-bottom: 20px;
     }
 }
 
