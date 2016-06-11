@@ -1286,7 +1286,11 @@ footer nav ul li:last-child {
 }
 .tabs {
   position: relative;
-  margin-bottom: -10px;
+}
+@media screen and (min-width: 384px) {
+  .tabs {
+    margin-bottom: -10px;
+  }
 }
 .tab {
   display: inline-block;
@@ -1303,7 +1307,6 @@ footer nav ul li:last-child {
   color: #005093;
   border: 3px solid #005093;
   border-bottom: 0;
-  padding-bottom: 20px;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -1342,6 +1345,7 @@ footer nav ul li:last-child {
 @media screen and (min-width: 384px) {
   .tab {
     display: inline-block;
+    padding-bottom: 20px;
   }
 }
 .tab-panes {
