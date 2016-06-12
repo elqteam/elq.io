@@ -772,7 +772,7 @@ section > .container > .gist {
   min-height: 100%;
   background-color: #005093;
   color: #ffcc05;
-  padding: 2.5rem 0;
+  padding: 1.5rem 0;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -792,15 +792,20 @@ section > .container > .gist {
 }
 @media screen and (min-width: 375px) {
   .intro {
-    padding: 5rem 0;
+    padding: 2.5rem 0;
   }
 }
 .intro .container {
   text-align: center;
 }
 .intro header {
-  margin-bottom: 2.5rem;
+  margin-bottom: 2rem;
   text-align: center;
+}
+@media screen and (min-width: 375px) {
+  .intro header {
+    margin-bottom: 2.5rem;
+  }
 }
 .intro header .logo {
   width: 10rem;
@@ -810,24 +815,20 @@ section > .container > .gist {
 .intro p {
   color: #fff;
   max-width: 555px;
-  font-size: 7.5vw;
+  font-size: 5.6vw;
   line-height: 1.1;
   letter-spacing: -0.03em;
   font-weight: 700;
   margin-left: auto;
   margin-right: auto;
   margin-top: 0;
-  margin-bottom: 2.5rem;
+  margin-bottom: 2rem;
   text-align: left;
-}
-@media screen and (min-width: 350px) {
-  .intro p {
-    font-size: 5.7vw;
-  }
 }
 @media screen and (min-width: 375px) {
   .intro p {
-    font-size: 5vw;
+    font-size: 5.8vw;
+    margin-bottom: 2.5rem;
   }
 }
 @media screen and (min-width: 429px) {

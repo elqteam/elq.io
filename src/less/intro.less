@@ -2,7 +2,7 @@
     min-height: 100%;
     background-color: @blue;
     color: @yellow;
-    padding: 2.5rem 0;
+    padding: 1.5rem 0;
 
     .box-sizing(border-box);
     .flex-display();
@@ -10,7 +10,7 @@
     .align-items(center);
 
     @media screen and (min-width: 375px) {
-      padding: 5rem 0;
+      padding: 2.5rem 0;
     }
 
     .container {
@@ -18,7 +18,11 @@
     }
 
     header {
-        margin-bottom: 2.5rem;
+        margin-bottom: 2rem;
+
+        @media screen and (min-width: 375px) {
+          margin-bottom: 2.5rem;
+        }
 
         text-align: center;
 
@@ -32,22 +36,19 @@
     p {
         color: #fff;
         max-width: 555px;
-        font-size: 7.5vw;
+        font-size: 5.6vw;
         line-height: 1.1;
         letter-spacing: -0.03em;
         font-weight: 700;
         margin-left: auto;
         margin-right: auto;
         margin-top: 0;
-        margin-bottom: 2.5rem;
+        margin-bottom: 2rem;
         text-align: left;
 
-        @media screen and (min-width: 350px) {
-          font-size: 5.7vw;
-        }
-
         @media screen and (min-width: 375px) {
-          font-size: 5vw;
+          font-size: 5.8vw;
+          margin-bottom: 2.5rem;
         }
 
         @media screen and (min-width: 429px) {
