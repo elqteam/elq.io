@@ -1,4 +1,10 @@
-// Modernizr.addTest("hyphens", Modernizr.testAllProps('hyphens'));
+var itHasBeenAtLeastOneSecond = false;
+var loaded = false;
+
+setTimeout(function(){
+    itHasBeenAtLeastOneSecond = true;
+    turnOffSplashscreen();
+}, 1000);
 
 document.addEventListener("DOMContentLoaded", function(event) { 
     initResizeButtons();
@@ -11,24 +17,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
         tabs(container);
     });
 
-    // var scrollToButtons = document.querySelectorAll("a[href^='#']");
-
-    // forEach(scrollToButtons, function(button) {
-    //     button.addEventListener("click", function(event){
-    //         console.log('lol');
-
-    //         //prevent the default action for the click event
-    //         event.preventDefault();
-
-    //         var targetId = event.target.getAttribute("href").substring(1);
-
-    //         //get the anchor link
-    //         var target = document.getElementById(targetId);
-
-    //         smoothScroll(target, 1000);
-    //     })
-    // });
-
     var navButton = document.querySelector(".nav-button");
     navButton.addEventListener("click", function(event){
         if(hasClass(navButton, "nav-button--is-open")) {
@@ -39,7 +27,20 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
         toggleClass(navButton, "nav-button--is-open");
     });
+
+    loaded = true;
+    turnOffSplashscreen();
 });
+
+function turnOffSplashscreen() {
+    var splashScreen = document.querySelector(".splashscreen");
+
+    if(itHasBeenAtLeastOneSecond && loaded && !hasClass(splashScreen, "splashscreen--off")) {
+        addClass(splashScreen, "splashscreen--off");
+        removeClass(document.querySelector("body"), "loading");
+        fadeOut(document.querySelector(".splashscreen-text"));
+    }
+}
 
 function initResizeButtons(elq) {
     var resizeButtons = document.querySelectorAll("button[resize-target]");
@@ -174,23 +175,66 @@ function not(fn, value) {
 
 function hasClass(el, className) {
     if (el.classList)
-      return el.classList.contains(className);
+        return el.classList.contains(className);
     else
-      return new RegExp('(^| )' + className + '( |$)', 'gi').test(el.className);
+        return new RegExp('(^| )' + className + '( |$)', 'gi').test(el.className);
+}
+
+function addClass(el, className) {
+    if (el.classList)
+        el.classList.add(className);
+    else
+        el.className += ' ' + className;
+}
+
+function removeClass(el, className) {
+    if (el.classList)
+        el.classList.remove(className);
+    else
+        el.className = el.className.replace(new RegExp('(^|\\b)' + className.split(' ').join('|') + '(\\b|$)', 'gi'), ' ');
 }
 
 function toggleClass(el, className) {
     if (el.classList) {
-      el.classList.toggle(className);
+        el.classList.toggle(className);
     } else {
-      var classes = el.className.split(' ');
-      var existingIndex = classes.indexOf(className);
+        var classes = el.className.split(' ');
+        var existingIndex = classes.indexOf(className);
 
-      if (existingIndex >= 0)
-        classes.splice(existingIndex, 1);
-      else
-        classes.push(className);
+        if (existingIndex >= 0)
+          classes.splice(existingIndex, 1);
+        else
+          classes.push(className);
 
-      el.className = classes.join(' ');
+        el.className = classes.join(' ');
     }
+}
+
+// fade out
+
+function fadeOut(el){
+  el.style.opacity = 1;
+
+  (function fade() {
+    if ((el.style.opacity -= .1) < 0) {
+      el.style.display = "none";
+    } else {
+      requestAnimationFrame(fade);
+    }
+  })();
+}
+
+// fade in
+
+function fadeIn(el, display){
+  el.style.opacity = 0;
+  el.style.display = display || "block";
+
+  (function fade() {
+    var val = parseFloat(el.style.opacity);
+    if (!((val += .1) > 1)) {
+      el.style.opacity = val;
+      requestAnimationFrame(fade);
+    }
+  })();
 }
