@@ -418,6 +418,17 @@ textarea {
   font: inherit; /* 2 */
 }
 
+.will-fade-out {
+  opacity: 0;
+  -webkit-transition: opacity 500ms linear;
+  -moz-transition: opacity 500ms linear;
+  -ms-transition: opacity 500ms linear;
+  -o-transition: opacity 500ms linear;
+  transition: opacity 500ms linear;
+}
+.fade-out {
+  opacity: 0;
+}
 @font-face {
   font-family: 'proxima-nova';
   src: url('../fonts/proxima_nova/proxima_nova_regular_webfont.eot');
@@ -824,9 +835,6 @@ section > .container > .gist {
   height: 10rem;
   max-width: 100%;
 }
-.intro .logo {
-  z-index: 1200;
-}
 .intro .logo,
 .intro .splashscreen,
 .intro .splashscreen-text {
@@ -834,6 +842,9 @@ section > .container > .gist {
   top: 0;
   left: 50%;
   margin-left: -5rem;
+}
+.intro .logo {
+  z-index: 1200;
 }
 .intro .splashscreen {
   z-index: 1100;
