@@ -631,8 +631,11 @@ ol.spacey li {
 ol.spacey ol {
   margin-top: 0.75rem;
 }
-body.loading {
+html,
+body {
   height: 100%;
+}
+body.loading {
   overflow: hidden;
 }
 .container {
