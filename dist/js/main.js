@@ -213,28 +213,32 @@ function toggleClass(el, className) {
 // fade out
 
 function fadeOut(el){
-  el.style.opacity = 1;
+    onTransitionEnd(el, function(){
+        el.style.display = "none";
+    });
 
-  (function fade() {
-    if ((el.style.opacity -= .1) < 0) {
-      el.style.display = "none";
-    } else {
-      requestAnimationFrame(fade);
-    }
-  })();
+  addClass(el, "will-fade-out");
+  addClass(el, "fade-out");
 }
 
-// fade in
-
-function fadeIn(el, display){
-  el.style.opacity = 0;
-  el.style.display = display || "block";
-
-  (function fade() {
-    var val = parseFloat(el.style.opacity);
-    if (!((val += .1) > 1)) {
-      el.style.opacity = val;
-      requestAnimationFrame(fade);
+function getViewportWidth() {
+    if (self.innerHeight) {
+        return self.innerWidth;
     }
-  })();
+
+    if (document.documentElement && document.documentElement.clientWidth) {
+        return document.documentElement.clientWidth;
+    }
+
+    if (document.body) {
+        return document.body.clientWidth;
+    }
+}
+
+function onTransitionEnd(el, func) {
+    el.addEventListener('transitionend', func);
+    el.addEventListener('webkitTransitionEnd', func);
+    el.addEventListener('otransitionend', func);
+    el.addEventListener('oTransitionEnd', func);
+    el.addEventListener('msTransitionEnd', func);
 }
