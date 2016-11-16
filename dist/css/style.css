@@ -858,11 +858,11 @@ section > .container > .gist {
   -ms-transform: scale(10);
   -o-transform: scale(10);
   transform: scale(10);
-  -webkit-transition: all 500ms cubic-bezier(0.645, 0.045, 0.355, 1);
-  -moz-transition: all 500ms cubic-bezier(0.645, 0.045, 0.355, 1);
-  -ms-transition: all 500ms cubic-bezier(0.645, 0.045, 0.355, 1);
-  -o-transition: all 500ms cubic-bezier(0.645, 0.045, 0.355, 1);
-  transition: all 500ms cubic-bezier(0.645, 0.045, 0.355, 1);
+  -webkit-transition: all 1000ms cubic-bezier(0.645, 0.045, 0.355, 1);
+  -moz-transition: all 1000ms cubic-bezier(0.645, 0.045, 0.355, 1);
+  -ms-transition: all 1000ms cubic-bezier(0.645, 0.045, 0.355, 1);
+  -o-transition: all 1000ms cubic-bezier(0.645, 0.045, 0.355, 1);
+  transition: all 1000ms cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 .intro .splashscreen--off {
   -webkit-transform: scale(1);
