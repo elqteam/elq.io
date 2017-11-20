@@ -456,7 +456,7 @@ textarea {
   src: url('../fonts/proxima_nova/proxima_nova_bold_webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/proxima_nova/proxima_nova_bold_webfont.woff2') format('woff2'), url('../fonts/proxima_nova/proxima_nova_bold_webfont.woff') format('woff'), url('../fonts/proxima_nova/proxima_nova_bold_webfont.ttf') format('truetype'), url('../fonts/proxima_nova/proxima_nova_bold_webfont.svg#proxima_nova_rgbold') format('svg');
   font-weight: 700;
   font-style: normal;
-  font-display: swap;
+  font-display: fallback;
 }
 @font-face {
   font-family: 'anonymous-pro';
