@@ -1,10 +1,10 @@
 var itHasBeenAtLeastOneSecond = false;
 var loaded = false;
 
-setTimeout(function(){
-    itHasBeenAtLeastOneSecond = true;
-    turnOffSplashscreen();
-}, 1000);
+// setTimeout(function(){
+//     itHasBeenAtLeastOneSecond = true;
+//     turnOffSplashscreen();
+// }, 1000);
 
 document.addEventListener("DOMContentLoaded", function(event) { 
     initResizeButtons();
@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 function turnOffSplashscreen() {
     var splashScreen = document.querySelector(".splashscreen");
 
-    if(itHasBeenAtLeastOneSecond && loaded && !hasClass(splashScreen, "splashscreen--off")) {
+    if(loaded && !hasClass(splashScreen, "splashscreen--off")) {
         addClass(splashScreen, "splashscreen--off");
         removeClass(document.querySelector("body"), "loading");
         fadeOut(document.querySelector(".splashscreen-text"));

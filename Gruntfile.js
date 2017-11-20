@@ -14,6 +14,18 @@ module.exports = function(grunt) {
             }
         },
 
+        cssmin: {
+          target: {
+            files: [{
+              expand: true,
+              cwd: 'dist/css',
+              src: ['*.css', '!*.min.css'],
+              dest: 'dist/css',
+              ext: '.min.css'
+            }]
+          }
+        },
+
         copy: {
             main: {
                 files: [
@@ -51,7 +63,6 @@ module.exports = function(grunt) {
 
     grunt.initConfig(config);
 
-    grunt.registerTask("build", ["clean", "less:development", "copy:main"]);
-
+    grunt.registerTask("build", ["clean", "less:development", "cssmin", "copy:main"]);
     grunt.registerTask("default", ["build", "connect", "watch"]);
 };

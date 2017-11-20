@@ -846,6 +846,11 @@ section > .container > .gist {
   left: 50%;
   margin-left: -5rem;
 }
+.intro .splashscreen-text {
+  width: 16rem;
+  height: 16rem;
+  margin-left: -8rem;
+}
 .intro .logo {
   z-index: 1200;
 }
